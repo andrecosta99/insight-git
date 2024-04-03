@@ -22,10 +22,12 @@ def create_layout(app):
                 dbc.Row(
                     [
                         dbc.Col(
-                            html.Img(
-                                src="https://assets.streamlinehq.com/image/private/w_200,h_200,ar_1/f_auto/v1/icons/freebies-freemojis/objects/objects/bar-chart-f5c5npy7d6s2nmc8ttmgxd.png?_a=DAJFJtWIZAAC",
-                                height="30px",
-                                className="me-3",
+                            dbc.NavbarBrand(
+                                html.I(
+                                    className="bi bi-graph-up",
+                                    style={"fontSize": "24px", "marginRight": "5px"},
+                                ),
+                                className="me-2",
                             )
                         ),
                         dbc.Col(dbc.NavbarBrand("Insight Git", className="ms-2")),
