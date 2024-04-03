@@ -22,7 +22,7 @@ var/
 wheels/
 *.egg-info/
 .installed.cfg
-.coverage
+.coverage.xml
 *.egg
 MANIFEST
 
