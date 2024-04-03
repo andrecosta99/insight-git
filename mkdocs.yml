@@ -1,7 +1,7 @@
-site_name: Commit Tracker
-site_description: "Commit Tracker analyzes Git repositories to present comprehensive statistics."
+site_name: Insight Git
+site_description: "Insight Git analyzes Git repositories to present comprehensive statistics."
 site_author: "André F. Costa"
-site_url: https://github.com/andrecosta99/ct-final
+site_url: https://github.com/andrecosta99/insight-git
 
 nav:
   - Home: index.md

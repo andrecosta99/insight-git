@@ -28,7 +28,7 @@ def create_layout(app):
                                 className="me-3",
                             )
                         ),
-                        dbc.Col(dbc.NavbarBrand("Commit Tracker", className="ms-2")),
+                        dbc.Col(dbc.NavbarBrand("Insight Git", className="ms-2")),
                     ],
                     align="center",
                     className="g-0",

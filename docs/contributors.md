@@ -1,6 +1,6 @@
 # Contributors Guide
 
-Thank you for your interest in contributing to Commit Tracker! We value the contributions from our community, whether they're bug fixes, new features, or documentation improvements.
+Thank you for your interest in contributing to Insight Git! We value the contributions from our community, whether they're bug fixes, new features, or documentation improvements.
 
 ## How to Contribute
 

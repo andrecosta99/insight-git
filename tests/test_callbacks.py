@@ -1,8 +1,6 @@
-# test_callbacks.py
-
 import pytest
 
-from committracker.callbacks import validate_input
+from insight_git.callbacks import validate_input
 
 
 # Test for validate_input function
