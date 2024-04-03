@@ -4,13 +4,13 @@ on:
   pull_request:
     branches: [main]
     paths:
-      - 'insight-git/**'
+      - 'insight_git/**'
       - 'tests/**'
       - '.github/workflows/cov.yml'
   push:
     branches: [main]
     paths:
-      - 'insight-git/**'
+      - 'insight_git/**'
       - 'tests/**'
       - '.github/workflows/cov.yml'
     tags: '*'
