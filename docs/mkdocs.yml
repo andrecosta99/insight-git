@@ -1,0 +1,18 @@
+site_name: Insight Git
+nav:
+  - Home: index.md
+  - API: api.md
+  - Functions: functions.md
+  - Contributors: contributors.md
+  - Developers: dev.md
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          rendering:
+            show_source: true
+
+theme:
+  name: material
