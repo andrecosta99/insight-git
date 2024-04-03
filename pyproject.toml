@@ -1,6 +1,6 @@
 [build-system]
 requires = ["setuptools>=40.6.0", "wheel"]
-build-backend = "setuptools.build_meta"
+build-backend = "setuptools"
 
 [project]
 name = "insight-git"
@@ -61,7 +61,7 @@ dev = [
 
 [project.urls]
 Homepage = "https://github.com/andrecosta99/insight-git"
-Documentation = "https://github.com/andrecosta99/insight-git#readme"
+Documentation = "https://github.com/andrecosta99/insight-git"
 Repository = "https://github.com/andrecosta99/insight-git"
 
 [tool.setuptools]

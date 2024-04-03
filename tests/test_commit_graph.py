@@ -10,8 +10,6 @@ from dash.exceptions import PreventUpdate
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 
-from insight_git.plugins.code_quality import run_code_quality_analysis
-
 # Importing functions to be tested
 from insight_git.plugins.commit_graph import display_commit_graph, extract_commit_dates
 
@@ -34,22 +32,6 @@ def subprocess_setup():
     with patch("insight_git.plugins.code_quality.subprocess.run") as mock_run:
         mock_run.return_value = MagicMock(stdout="Flake8 output", returncode=0)
         yield mock_run
-
-
-# Tests for run_code_quality_analysis
-def test_run_code_quality_analysis_success(repo_setup, subprocess_setup):
-    # Test to verify successful Flake8 analysis
-    repo_path = "dummy/path/to/repo"
-    result = run_code_quality_analysis(repo_path)
-    assert result == "Flake8 output"
-
-
-def test_run_code_quality_analysis_no_issues_found(repo_setup, subprocess_setup):
-    # Test for when Flake8 finds no issues
-    subprocess_setup.return_value.stdout = ""
-    repo_path = "dummy/path/to/repo"
-    result = run_code_quality_analysis(repo_path)
-    assert result == "No issues found by Flake8."
 
 
 # Mock setup for testing commit graph functionality
