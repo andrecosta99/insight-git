@@ -9,9 +9,13 @@ To set up your development environment for Insight Git, execute the following co
 git clone https://github.com/andrecosta99/ct-final.git
 cd ct-final
 python -m venv env
+
 # On Unix or MacOS
+
 source env/bin/activate
+
 # On Windows
+
 .\env\Scripts\activate
 pip install -e .
 pre-commit install
