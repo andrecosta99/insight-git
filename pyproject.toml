@@ -104,3 +104,6 @@ exclude = [
     "docs"
 ]
 docstring-convention = "google"
+
+[tool.setuptools.package-data]
+insight_git = ["resources/*"]
