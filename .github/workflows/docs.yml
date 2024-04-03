@@ -18,7 +18,9 @@ jobs:
           pip install .[dev]
 
       - name: Build the MkDocs Documentation
-        run: mkdocs build
+        run: |
+          cd docs
+          mkdocs build
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4

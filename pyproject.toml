@@ -62,7 +62,7 @@ dev = [
 
 [project.urls]
 Homepage = "https://github.com/andrecosta99/insight-git"
-Documentation = "https://github.com/andrecosta99/insight-git"
+Documentation = "https://andrecosta99.github.io/insight-git/"
 Repository = "https://github.com/andrecosta99/insight-git"
 
 [tool.setuptools]
