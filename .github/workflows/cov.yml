@@ -2,13 +2,13 @@ name: Coverage
 
 on:
   pull_request:
-    branches: [master]
+    branches: [main]
     paths:
       - 'insight-git/**'
       - 'tests/**'
       - '.github/workflows/cov.yml'
   push:
-    branches: [master]
+    branches: [main]
     paths:
       - 'insight-git/**'
       - 'tests/**'
