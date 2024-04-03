@@ -4,7 +4,7 @@ build-backend = "setuptools"
 
 [project]
 name = "insight-git"
-version = "0.1.0"
+version = "0.1.1"
 description = "Insight Git analyzes Git repositories to present comprehensive statistics."
 authors = [{name = "André F. Costa", email = "afmcosta@gmail.com"}]
 readme = "README.md"
