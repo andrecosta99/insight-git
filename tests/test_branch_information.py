@@ -7,13 +7,13 @@ import pytest
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 
-from committracker.plugins.branch_information import extract_branches_info
+from insight_git.plugins.branch_information import extract_branches_info
 
 
 @pytest.fixture
 def git_branches_mock():
     # Mock the Repo object and its methods to simulate different branches and their commit counts.
-    with patch("committracker.plugins.branch_information.Repo") as mock_repo:
+    with patch("insight_git.plugins.branch_information.Repo") as mock_repo:
         mock_main_branch = MagicMock()
         mock_develop_branch = MagicMock()
 

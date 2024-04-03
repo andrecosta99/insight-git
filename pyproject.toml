@@ -3,9 +3,9 @@ requires = ["setuptools>=40.6.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "commit-tracker"
-version = "2.5"
-description = "Commit Tracker analyzes Git repositories to present comprehensive statistics."
+name = "insight-git"
+version = "0.1.0"
+description = "Insight Git analyzes Git repositories to present comprehensive statistics."
 authors = [{name = "André F. Costa", email = "afmcosta@gmail.com"}]
 readme = "README.md"
 requires-python = ">=3.10"
@@ -28,14 +28,14 @@ dependencies = [
 ]
 
 [project.scripts]
-commit-tracker = "committracker.__main__:main"
+insight-git = "insight_git.__main__:main"
 
-[project.entry-points."commit_tracker.plugins"]
-branch_information = "committracker.plugins.branch_information:display_branch_information"
-commit_graph = "committracker.plugins.commit_graph:display_commit_graph"
-contributors = "committracker.plugins.contributors_info:display_contributors_info"
-commit_type = "committracker.plugins.commit_type:display_commit_type"
-git_statistics = "committracker.plugins.git_statistics:display_git_statistics"
+[project.entry-points."insight_git.plugins"]
+branch_information = "insight_git.plugins.branch_information:display_branch_information"
+commit_graph = "insight_git.plugins.commit_graph:display_commit_graph"
+contributors = "insight_git.plugins.contributors_info:display_contributors_info"
+commit_type = "insight_git.plugins.commit_type:display_commit_type"
+git_statistics = "insight_git.plugins.git_statistics:display_git_statistics"
 
 [project.optional-dependencies]
 dev = [
@@ -60,14 +60,14 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/andrecosta99/ct-final"
-Documentation = "https://github.com/andrecosta99/ct-final#readme"
-Repository = "https://github.com/andrecosta99/ct-final"
+Homepage = "https://github.com/andrecosta99/insight-git"
+Documentation = "https://github.com/andrecosta99/insight-git#readme"
+Repository = "https://github.com/andrecosta99/insight-git"
 
 [tool.setuptools]
 packages = [
-    "committracker",
-    "committracker.plugins",
+    "insight_git",
+    "insight_git.plugins",
 ]
 
 [tool.pytest.ini_options]

@@ -4,13 +4,13 @@ on:
   pull_request:
     branches: [master]
     paths:
-      - 'committracker/**'
+      - 'insight-git/**'
       - 'tests/**'
       - '.github/workflows/cov.yml'
   push:
     branches: [master]
     paths:
-      - 'committracker/**'
+      - 'insight-git/**'
       - 'tests/**'
       - '.github/workflows/cov.yml'
     tags: '*'
@@ -31,7 +31,7 @@ jobs:
           pip install .[dev]
       - name: Run tests with coverage
         run: |
-          pytest --cov=committracker --cov-report=xml
+          pytest --cov=insight-git --cov-report=xml
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:

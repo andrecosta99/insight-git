@@ -1,6 +1,6 @@
 from unittest.mock import patch
 
-from committracker import __main__
+from insight_git import __main__
 
 
 def test_main_calls_run_server_with_debug_true():

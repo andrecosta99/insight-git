@@ -8,10 +8,7 @@ import pytest
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 
-from committracker.plugins.git_statistics import (
-    display_git_statistics,
-    extract_git_stats,
-)
+from insight_git.plugins.git_statistics import display_git_statistics, extract_git_stats
 
 
 @pytest.fixture()
@@ -22,7 +19,7 @@ def git_repo_mock():
     Yields:
         MagicMock object: A mock of the Repo object with predefined commits and stats.
     """
-    with patch("committracker.plugins.git_statistics.Repo") as mock_repo:
+    with patch("insight_git.plugins.git_statistics.Repo") as mock_repo:
         mock_commit = MagicMock()
         mock_commit.committed_datetime = datetime.now() - timedelta(days=1)
         mock_commit.stats.total = {"insertions": 10, "deletions": 5}

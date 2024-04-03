@@ -10,13 +10,10 @@ from dash.exceptions import PreventUpdate
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 
-from committracker.plugins.code_quality import run_code_quality_analysis
+from insight_git.plugins.code_quality import run_code_quality_analysis
 
 # Importing functions to be tested
-from committracker.plugins.commit_graph import (
-    display_commit_graph,
-    extract_commit_dates,
-)
+from insight_git.plugins.commit_graph import display_commit_graph, extract_commit_dates
 
 
 # Mock setup for testing code quality analysis functionality
@@ -24,8 +21,8 @@ from committracker.plugins.commit_graph import (
 def repo_setup():
     # Mocks to simulate a non-empty repository and to mock os.path.isdir
     with (
-        patch("committracker.plugins.code_quality.os.path.isdir", return_value=True),
-        patch("committracker.plugins.code_quality.Repo") as mock_repo,
+        patch("insight_git.plugins.code_quality.os.path.isdir", return_value=True),
+        patch("insight_git.plugins.code_quality.Repo") as mock_repo,
     ):
         mock_repo.return_value.bare = False
         yield
@@ -34,7 +31,7 @@ def repo_setup():
 @pytest.fixture
 def subprocess_setup():
     # Mocks subprocess.run to simulate the Flake8 command and its output
-    with patch("committracker.plugins.code_quality.subprocess.run") as mock_run:
+    with patch("insight_git.plugins.code_quality.subprocess.run") as mock_run:
         mock_run.return_value = MagicMock(stdout="Flake8 output", returncode=0)
         yield mock_run
 
@@ -59,7 +56,7 @@ def test_run_code_quality_analysis_no_issues_found(repo_setup, subprocess_setup)
 @pytest.fixture
 def git_repo_mock():
     # Mocks Repo to simulate commit data for the graph
-    with patch("committracker.plugins.commit_graph.Repo") as mock_repo:
+    with patch("insight_git.plugins.commit_graph.Repo") as mock_repo:
         mock_commit = MagicMock()
         mock_commit.committed_datetime = datetime.now() - timedelta(days=1)
         mock_commit_2 = MagicMock()
@@ -81,7 +78,7 @@ def test_display_commit_graph_error(git_repo_mock):
     # Tests error handling when extracting commit dates fails
     repo_path = "dummy/path/to/repo"
     with patch(
-        "committracker.plugins.commit_graph.extract_commit_dates",
+        "insight_git.plugins.commit_graph.extract_commit_dates",
         return_value={"error": "Test error"},
     ):
         with pytest.raises(

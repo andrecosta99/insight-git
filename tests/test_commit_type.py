@@ -9,13 +9,13 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")
 
 
 # Import the function under test.
-from committracker.plugins.commit_type import extract_commit_types
+from insight_git.plugins.commit_type import extract_commit_types
 
 
 @pytest.fixture
 def git_repo_mock():
     # Mock the Repo object and its iter_commits method to simulate a repository with a predefined set of commits.
-    with patch("committracker.plugins.commit_type.Repo") as mock_repo:
+    with patch("insight_git.plugins.commit_type.Repo") as mock_repo:
         # Define a series of mock commits with various commit messages to test categorization.
         mock_repo.return_value.iter_commits.return_value = [
             MagicMock(message="fixed a bug in the login feature"),

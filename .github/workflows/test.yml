@@ -4,14 +4,14 @@ on:
   pull_request:
     branches: [master]
     paths:
-      - "committracker/**"
+      - "insight-git/**"
       - "tests/**"
       - "pyproject.toml"
       - ".github/workflows/test.yml"
   push:
     branches: [master]
     paths:
-      - "committracker/**"
+      - "insight-git/**"
       - "tests/**"
       - "pyproject.toml"
       - ".github/workflows/test.yml"

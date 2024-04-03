@@ -71,6 +71,10 @@ def display_commit_graph(repo_path):
             )
         ]
     )
-    fig.update_layout(title="", xaxis_title="Date", yaxis_title="Number of Commits")
+    fig.update_layout(
+        title="Commit Activity Over Time",
+        xaxis_title="Date",
+        yaxis_title="Number of Commits",
+    )
 
     return dcc.Graph(figure=fig)

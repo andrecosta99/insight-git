@@ -10,6 +10,6 @@ app = Dash(
     external_stylesheets=[dbc.themes.BOOTSTRAP],
     suppress_callback_exceptions=True,
 )
-app.title = "Commit Tracker"
+app.title = "Insight Git"
 app.layout = create_layout(app)
 register_callbacks(app)

@@ -8,7 +8,7 @@ import pytest
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 
-from committracker.plugins.contributors_info import (
+from insight_git.plugins.contributors_info import (
     display_contributors_info,
     extract_contributors,
 )
@@ -21,7 +21,7 @@ def git_repo_mock_contributors():
 
     This allows testing of contributor extraction functionality without a real repository.
     """
-    with patch("committracker.plugins.contributors_info.Repo") as mock_repo:
+    with patch("insight_git.plugins.contributors_info.Repo") as mock_repo:
         mock_commit_1 = MagicMock()
         mock_commit_1.author.name = "John Doe"
 
