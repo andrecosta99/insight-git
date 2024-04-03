@@ -1,19 +1,26 @@
+import base64
+from importlib.resources import files
+
 import dash_bootstrap_components as dbc
 from dash import dcc, html
 
 from .plugin_loader import load_plugins
 
 
-# Function to create the layout of the Dash app
 def create_layout(app):
     plugins = load_plugins()  # Loads available plugins
     plugin_options = [
-        {
-            "label": plugin.replace("_", " ").title(),
-            "value": plugin,
-        }  # Format plugins for dropdown
+        {"label": plugin.replace("_", " ").title(), "value": plugin}
         for plugin in plugins.keys()
     ]
+
+    # Carregar e codificar a imagem
+    resource_path = files("insight_git.resources").joinpath("graph.png")
+    encoded_image = base64.b64encode(resource_path.read_bytes()).decode("ascii")
+    image_html = html.Img(
+        src=f"data:image/png;base64,{encoded_image}",
+        style={"height": "24px", "marginRight": "5px"},
+    )
 
     # Define the navigation bar with logo and title
     navbar = dbc.Navbar(
@@ -21,16 +28,8 @@ def create_layout(app):
             [
                 dbc.Row(
                     [
-                        dbc.Col(
-                            dbc.NavbarBrand(
-                                html.I(
-                                    className="bi bi-graph-up",
-                                    style={"fontSize": "24px", "marginRight": "5px"},
-                                ),
-                                className="me-2",
-                            )
-                        ),
-                        dbc.Col(dbc.NavbarBrand("Insight Git", className="ms-2")),
+                        dbc.Col(dbc.NavbarBrand(image_html, className="me-2")),
+                        dbc.Col(dbc.NavbarBrand("Insight Gits", className="ms-2")),
                     ],
                     align="center",
                     className="g-0",
