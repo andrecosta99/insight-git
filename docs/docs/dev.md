@@ -36,6 +36,4 @@ This will create a coverage report in the `htmlcov` directory, which you can ope
 
 ## Contributing Guidelines
 
-Please review the file for detailed instructions on how to contribute to the project, including coding standards, pull request processes, and guidelines for writing tests and documentation.
-
 For documentation changes or additions, ensure you are familiar with MkDocs and follow the project's standards for documentation structure and formatting.
