@@ -86,7 +86,7 @@ def register_callbacks(app):
             raise PreventUpdate
 
         loading_message = html.Div(
-            "Data is being updated. Please wait...",
+            "Data updated...",
             style={"textAlign": "center", "marginTop": "14px", "marginBottom": "20px"},
         )
 
