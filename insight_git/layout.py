@@ -14,7 +14,6 @@ def create_layout(app):
         for plugin in plugins.keys()
     ]
 
-    # Carregar e codificar a imagem
     resource_path = files("insight_git.resources").joinpath("graph.png")
     encoded_image = base64.b64encode(resource_path.read_bytes()).decode("ascii")
     image_html = html.Img(
@@ -90,9 +89,9 @@ def create_layout(app):
                     dbc.Row(dbc.Col(submit_button, width=12, lg=8), justify="center"),
                     dbc.Row(dbc.Col(plugin_output_area, md=8), justify="center"),
                 ],
-                fluid=True,  # Container uses the entire horizontal space
+                fluid=True,
             ),
         ]
     )
 
-    return layout  # Returns the defined layout for the app
+    return layout
