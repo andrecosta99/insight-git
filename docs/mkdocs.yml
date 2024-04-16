@@ -23,6 +23,8 @@ theme:
 plugins:
   - search
   - mkdocstrings:
+      watch:
+        - ../insight_git
       handlers:
         python:
           rendering:
