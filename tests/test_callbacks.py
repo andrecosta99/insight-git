@@ -1,5 +1,3 @@
-import pytest
-
 from insight_git.callbacks import validate_input
 
 

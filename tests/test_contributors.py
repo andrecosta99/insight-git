@@ -4,7 +4,6 @@ from unittest.mock import MagicMock, patch
 import pytest
 from dash import html
 from dash.exceptions import PreventUpdate
-from git import Repo
 
 from insight_git.plugins.contributors_info import (
     display_contributors_info,

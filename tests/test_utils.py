@@ -1,7 +1,5 @@
-import logging
 from unittest.mock import MagicMock, patch
 
-import pytest
 from git import Repo
 
 from insight_git.utils import clone_remote_repo
