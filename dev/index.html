@@ -291,9 +291,111 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installing-for-development" class="md-nav__link">
+  <a href="#setting-up-for-development" class="md-nav__link">
     <span class="md-ellipsis">
-      Installing for Development
+      Setting Up for Development
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting Up for Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clone-the-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clone the Repository:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-and-activate-a-virtual-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create and Activate a Virtual Environment:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-development-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Development Dependencies:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running Tests
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating Plugins
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating Plugins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plugin-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plugin Development:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#register-the-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Register the Plugin:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-the-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the Plugin:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributing-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contributing Guidelines
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Information
     </span>
   </a>
   
@@ -323,27 +425,68 @@
 
 
 <h1 id="for-developers">For Developers<a class="headerlink" href="#for-developers" title="Permanent link">&para;</a></h1>
-<p>If you are interested in contributing to the Insight Git project or wish to add new features, please follow the steps below to set up your development environment.</p>
-<h2 id="installing-for-development">Installing for Development<a class="headerlink" href="#installing-for-development" title="Permanent link">&para;</a></h2>
-<p>To set up your development environment for Insight Git, execute the following commands. This will install all necessary development dependencies, including new tools and libraries introduced for handling data visualization and Git repository analysis.</p>
-<p>git clone https://github.com/andrecosta99/insight-git
-cd ct-final
-python -m venv env</p>
-<h1 id="on-unix-or-macos">On Unix or MacOS<a class="headerlink" href="#on-unix-or-macos" title="Permanent link">&para;</a></h1>
-<p>source env/bin/activate</p>
-<h1 id="on-windows">On Windows<a class="headerlink" href="#on-windows" title="Permanent link">&para;</a></h1>
-<p>.\env\Scripts\activate
-pip install -e .
-pre-commit install</p>
-<p>Ensure all dependencies are up to date by reviewing the <code>requirements.txt</code> file or any other dependency management file used by the project.</p>
+<p>Welcome to the developer documentation for Insight Git. This section provides detailed instructions on setting up your development environment, running tests, and creating plugins.</p>
+<h2 id="setting-up-for-development">Setting Up for Development<a class="headerlink" href="#setting-up-for-development" title="Permanent link">&para;</a></h2>
+<h3 id="clone-the-repository">Clone the Repository:<a class="headerlink" href="#clone-the-repository" title="Permanent link">&para;</a></h3>
+<p>Clone the Insight Git repository using the following command:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/andrecosta99/insight-git
+</code></pre></div>
+<h3 id="create-and-activate-a-virtual-environment">Create and Activate a Virtual Environment:<a class="headerlink" href="#create-and-activate-a-virtual-environment" title="Permanent link">&para;</a></h3>
+<p>Navigate to the project directory:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>insight-git
+</code></pre></div>
+<p>Create a virtual environment:</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>env
+</code></pre></div>
+<p>Activate the virtual environment:</p>
+<p>On Windows:</p>
+<div class="highlight"><pre><span></span><code>env<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
+</code></pre></div>
+<p>On Unix or MacOS:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>env/bin/activate
+</code></pre></div>
+<h3 id="install-development-dependencies">Install Development Dependencies:<a class="headerlink" href="#install-development-dependencies" title="Permanent link">&para;</a></h3>
+<p>Install the project and its dependencies in editable mode:</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;.[dev]&quot;</span>
+</code></pre></div>
 <h2 id="running-tests">Running Tests<a class="headerlink" href="#running-tests" title="Permanent link">&para;</a></h2>
-<p>Insight Git includes a suite of tests to ensure the quality and functionality of the code. To run these tests, use the following command:</p>
-<p>pytest</p>
-<p>To generate a coverage report and see which parts of your code are covered by tests, use:</p>
-<p>pytest --cov=insight-git --cov-report=html</p>
-<p>This will create a coverage report in the <code>htmlcov</code> directory, which you can open with a web browser.</p>
+<p>To ensure the functionality of your code, run the included tests:</p>
+<p>Execute the tests using:</p>
+<div class="highlight"><pre><span></span><code>pytest
+</code></pre></div>
+<p>For a coverage report, use:</p>
+<div class="highlight"><pre><span></span><code>pytest<span class="w"> </span>--cov<span class="o">=</span>insight_git<span class="w"> </span>--cov-report<span class="o">=</span>html
+</code></pre></div>
+<p>This generates a coverage report in the <code>htmlcov</code> directory.</p>
+<h2 id="creating-plugins">Creating Plugins<a class="headerlink" href="#creating-plugins" title="Permanent link">&para;</a></h2>
+<p>To create a new plugin for Insight Git, follow these steps:</p>
+<h3 id="plugin-development">Plugin Development:<a class="headerlink" href="#plugin-development" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Create a new Python file in the <code>insight_git/plugins</code> directory. For example, <code>new_feature.py</code>.</li>
+<li>Implement your plugin functionality. Typically, this involves writing a function that processes data from a Git repository and returns a Dash component that visualizes this data.</li>
+</ol>
+<h3 id="register-the-plugin">Register the Plugin:<a class="headerlink" href="#register-the-plugin" title="Permanent link">&para;</a></h3>
+<p>Open the <code>pyproject.toml</code> file.</p>
+<p>Add your plugin under <code>[project.entry-points."insight_git.plugins"]</code> to make it discoverable by the application. Format it as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="n">new_feature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;insight_git.plugins.new_feature:display_function&quot;</span>
+</code></pre></div>
+<p>Replace <code>display_function</code> with the function in your plugin file that returns the Dash component.</p>
+<h3 id="using-the-plugin">Using the Plugin:<a class="headerlink" href="#using-the-plugin" title="Permanent link">&para;</a></h3>
+<p>Once registered, your plugin will be available within the Insight Git application. Users can select your plugin from the interface to view its output based on the provided repository data.</p>
 <h2 id="contributing-guidelines">Contributing Guidelines<a class="headerlink" href="#contributing-guidelines" title="Permanent link">&para;</a></h2>
-<p>For documentation changes or additions, ensure you are familiar with MkDocs and follow the project's standards for documentation structure and formatting.</p>
+<p>If you wish to contribute enhancements or fixes:</p>
+<ol>
+<li>Fork the repository.</li>
+<li>Create a new branch for your feature.</li>
+<li>Commit changes to your branch.</li>
+<li>Push the branch to your fork and open a pull request.</li>
+</ol>
+<h2 id="additional-information">Additional Information<a class="headerlink" href="#additional-information" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Documentation Changes</strong>: If you modify or enhance documentation, ensure compatibility with MkDocs.</li>
+<li><strong>License</strong>: Insight Git is licensed under the MIT License. See the LICENSE file for more details.</li>
+</ul>
+<p>Thank you for contributing to Insight Git! Your contributions help improve the tool and enrich the community.</p>
 
 
 
