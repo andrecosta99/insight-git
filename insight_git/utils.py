@@ -5,7 +5,7 @@ import tempfile
 from git import Repo
 
 
-# Clone a Git repository to a temporary directory and handle errors.
+# Clone a Git repository to a temporary directory and handle errors
 def clone_remote_repo(url):
     temp_dir = tempfile.mkdtemp()  # Creates temporary directory
     try:
