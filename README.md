@@ -2,7 +2,7 @@
 [![Tests](https://github.com/andrecosta99/insight-git/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/andrecosta99/insight-git/actions/workflows/test.yml)
 [![codecov](https://codecov.io/gh/andrecosta99/insight-git/branch/main/graph/badge.svg)](https://codecov.io/gh/andrecosta99/insight-git)
 [![Docs](https://img.shields.io/badge/docs-click%20here-blue.svg)](https://andrecosta99.github.io/insight-git/)
-[![PyPI version](https://badge.fury.io/py/insight-git.svg)](https://badge.fury.io/py/insight-git)
+[![PyPI version](https://badge.fury.io/py/insight-git.svg?v=0.1.3)](https://badge.fury.io/py/insight-git)
 ![GitHub forks](https://img.shields.io/github/forks/andrecosta99/insight-git)
 
 
