@@ -1,39 +1,108 @@
 # For Developers
 
-If you are interested in contributing to the Insight Git project or wish to add new features, please follow the steps below to set up your development environment.
+Welcome to the developer documentation for Insight Git. This section provides detailed instructions on setting up your development environment, running tests, and creating plugins.
 
-## Installing for Development
+## Setting Up for Development
 
-To set up your development environment for Insight Git, execute the following commands. This will install all necessary development dependencies, including new tools and libraries introduced for handling data visualization and Git repository analysis.
+### Clone the Repository:
 
+Clone the Insight Git repository using the following command:
+
+```bash
 git clone https://github.com/andrecosta99/insight-git
-cd ct-final
+```
+
+### Create and Activate a Virtual Environment:
+
+Navigate to the project directory:
+
+```bash
+cd insight-git
+```
+
+Create a virtual environment:
+
+```bash
 python -m venv env
+```
 
-# On Unix or MacOS
+Activate the virtual environment:
 
+On Windows:
+
+```bash
+env\Scripts\activate
+```
+
+On Unix or MacOS:
+
+```bash
 source env/bin/activate
+```
 
-# On Windows
+### Install Development Dependencies:
 
-.\env\Scripts\activate
-pip install -e .
-pre-commit install
+Install the project and its dependencies in editable mode:
 
-Ensure all dependencies are up to date by reviewing the `requirements.txt` file or any other dependency management file used by the project.
+```shell
+pip install -e ".[dev]"
+```
 
 ## Running Tests
 
-Insight Git includes a suite of tests to ensure the quality and functionality of the code. To run these tests, use the following command:
+To ensure the functionality of your code, run the included tests:
 
+Execute the tests using:
+
+```shell
 pytest
+```
 
-To generate a coverage report and see which parts of your code are covered by tests, use:
+For a coverage report, use:
 
-pytest --cov=insight-git --cov-report=html
+```shell
+pytest --cov=insight_git --cov-report=html
+```
 
-This will create a coverage report in the `htmlcov` directory, which you can open with a web browser.
+This generates a coverage report in the `htmlcov` directory.
+
+## Creating Plugins
+
+To create a new plugin for Insight Git, follow these steps:
+
+### Plugin Development:
+
+1. Create a new Python file in the `insight_git/plugins` directory. For example, `new_feature.py`.
+2. Implement your plugin functionality. Typically, this involves writing a function that processes data from a Git repository and returns a Dash component that visualizes this data.
+
+### Register the Plugin:
+
+Open the `pyproject.toml` file.
+
+Add your plugin under `[project.entry-points."insight_git.plugins"]` to make it discoverable by the application. Format it as follows:
+
+```toml
+new_feature = "insight_git.plugins.new_feature:display_function"
+```
+
+Replace `display_function` with the function in your plugin file that returns the Dash component.
+
+### Using the Plugin:
+
+Once registered, your plugin will be available within the Insight Git application. Users can select your plugin from the interface to view its output based on the provided repository data.
 
 ## Contributing Guidelines
 
-For documentation changes or additions, ensure you are familiar with MkDocs and follow the project's standards for documentation structure and formatting.
+If you wish to contribute enhancements or fixes:
+
+1. Fork the repository.
+2. Create a new branch for your feature.
+3. Commit changes to your branch.
+4. Push the branch to your fork and open a pull request.
+
+## Additional Information
+
+- **Documentation Changes**: If you modify or enhance documentation, ensure compatibility with MkDocs.
+- **License**: Insight Git is licensed under the MIT License. See the LICENSE file for more details.
+
+Thank you for contributing to Insight Git! Your contributions help improve the tool and enrich the community.
