@@ -3,7 +3,6 @@
 [![codecov](https://codecov.io/gh/andrecosta99/insight-git/branch/main/graph/badge.svg)](https://codecov.io/gh/andrecosta99/insight-git)
 [![Docs](https://img.shields.io/badge/docs-click%20here-blue.svg)](https://andrecosta99.github.io/insight-git/)
 [![PyPI version](https://badge.fury.io/py/insight-git.svg)](https://badge.fury.io/py/insight-git)
-![GitHub last commit](https://img.shields.io/github/last-commit/andrecosta99/insight-git)
 ![GitHub forks](https://img.shields.io/github/forks/andrecosta99/insight-git)
 
 
@@ -35,6 +34,9 @@ Follow the instructions in the web interface to input the path or URL of the Git
 
 ## Contributing
 Contributions to Insight Git are welcome! If you've found a bug or have a suggestion, please open an issue on GitHub.
+
+## Contributing
+If you want to develop your own plugin to use in insight-git read the Developers section in the documentation.
 
 ## License
 Insight Git is licensed under the MIT License. See the LICENSE file for more details.
