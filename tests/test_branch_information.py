@@ -1,41 +1,65 @@
-import os
-import sys
 from unittest.mock import MagicMock, patch
 
 import pytest
+from dash import html
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-
-
-from insight_git.plugins.branch_information import extract_branches_info
+from insight_git.plugins.branch_information import (
+    display_branch_information,
+    extract_branches_info,
+)
 
 
 @pytest.fixture
-def git_branches_mock():
-    # Mock the Repo object and its methods to simulate different branches and their commit counts.
+def git_repo_mock():
     with patch("insight_git.plugins.branch_information.Repo") as mock_repo:
         mock_main_branch = MagicMock()
         mock_develop_branch = MagicMock()
 
-        # Setting branch names
+        # Assigning names directly to mock objects for branches
         mock_main_branch.name = "main"
         mock_develop_branch.name = "develop"
 
-        # Simulating commit counts for each branch
-        mock_repo.return_value.iter_commits.side_effect = [
-            list(range(10)),  # For 'main' branch
-            list(range(5)),  # For 'develop' branch
-        ]
-
-        # Assigning the mocked branches to the repo
+        # Mock the iter_commits to return a list of mocks representing commits
         mock_repo.return_value.branches = [mock_main_branch, mock_develop_branch]
+        mock_repo.return_value.iter_commits.side_effect = lambda branch: (
+            [MagicMock() for _ in range(10)]
+            if branch.name == "main"
+            else [MagicMock() for _ in range(5)]
+        )
 
         yield mock_repo
 
 
-def test_extract_branches_info_success(git_branches_mock):
-    # Testing successful extraction of branches information
-    expected_output = {"main": 10, "develop": 5}
+def test_extract_branches_info_success(git_repo_mock):
+    """Test successful extraction of branch information."""
     repo_path = "dummy/path/to/repo"
     branches_info = extract_branches_info(repo_path)
-    assert branches_info == expected_output
+    expected_output = {"main": 10, "develop": 5}
+    assert (
+        branches_info == expected_output
+    ), "Branch information extraction did not match expected output."
+
+
+def test_display_branch_information_success(git_repo_mock):
+    """Test correct display of branch information in the interface."""
+    repo_path = "dummy/path/to/repo"
+    result = display_branch_information(repo_path)
+    assert "main: 10 commits" in str(
+        result
+    ), "Information for 'main' branch is incorrectly displayed."
+    assert "develop: 5 commits" in str(
+        result
+    ), "Information for 'develop' branch is incorrectly displayed."
+
+
+def test_display_branch_information_failure(git_repo_mock):
+    """Test display of error message when branch information extraction fails."""
+    with patch(
+        "insight_git.plugins.branch_information.extract_branches_info",
+        return_value={"error": "Error accessing repository"},
+    ):
+        repo_path = "dummy/path/to/repo"
+        result = display_branch_information(repo_path)
+        assert "Error: Error accessing repository" in str(
+            result
+        ), "Error message is not displayed correctly."
