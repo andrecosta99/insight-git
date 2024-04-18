@@ -21,17 +21,27 @@ jobs:
     steps:
       - name: Clone repository
         uses: actions/checkout@v4
+
       - name: Setup Python 3.10
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
+
       - name: Install dependencies
         run: |
           pip install --upgrade pip
           pip install .[dev]
+
       - name: Run tests with coverage
         run: |
           pytest --cov=insight_git --cov-report=xml
+
+      - name: List contents of the directory
+        run: ls -la
+
+      - name: Show contents of coverage.xml
+        run: cat coverage.xml
+
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
