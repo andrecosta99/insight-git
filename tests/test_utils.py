@@ -6,6 +6,9 @@ from insight_git.utils import clone_remote_repo
 
 
 def test_clone_remote_repo_success():
+    """
+    Test if
+    """
     with patch("tempfile.mkdtemp", return_value="/fake/temp/dir") as _:
         with patch.object(Repo, "clone_from") as mock_clone:
             result = clone_remote_repo("http://fake-url.com/repo.git")
