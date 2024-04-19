@@ -345,6 +345,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#insight_git.plugins.git_statistics.display_git_statistics" class="md-nav__link">
+    <span class="md-ellipsis">
+      display_git_statistics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#insight_git.plugins.git_statistics.extract_git_stats" class="md-nav__link">
     <span class="md-ellipsis">
       extract_git_stats
@@ -1147,6 +1156,182 @@
 
 
 
+<h2 id="insight_git.plugins.git_statistics.display_git_statistics" class="doc doc-heading">
+          <code class=" language-python"><span class="n">display_git_statistics</span><span class="p">(</span><span class="n">repo_path</span><span class="p">)</span></code>
+
+<a href="#insight_git.plugins.git_statistics.display_git_statistics" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Creates a Dash HTML component displaying general Git statistics for a repository including branch information.</p>
+<p>This function uses the <code>extract_git_stats</code> function to gather statistics about a repository's commit history and branches,
+then constructs a Dash HTML component to visually present these statistics.</p>
+
+
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>repo_path</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The file system path to the local Git repository.</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>dash.html.Div: A Dash HTML component containing the visual representation of the repository's general statistics.
+           If an error occurs during statistics extraction, the component will display the error message.</p>
+            </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+          <details class="quote">
+            <summary>Source code in <code>insight_git/plugins/git_statistics.py</code></summary>
+            <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">display_git_statistics</span><span class="p">(</span><span class="n">repo_path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates a Dash HTML component displaying general Git statistics for a repository including branch information.</span>
+
+<span class="sd">    This function uses the `extract_git_stats` function to gather statistics about a repository&#39;s commit history and branches,</span>
+<span class="sd">    then constructs a Dash HTML component to visually present these statistics.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        repo_path (str): The file system path to the local Git repository.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dash.html.Div: A Dash HTML component containing the visual representation of the repository&#39;s general statistics.</span>
+<span class="sd">                       If an error occurs during statistics extraction, the component will display the error message.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">stats</span> <span class="o">=</span> <span class="n">extract_git_stats</span><span class="p">(</span><span class="n">repo_path</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s2">&quot;error&quot;</span> <span class="ow">in</span> <span class="n">stats</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;error&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">branch_list</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">Ul</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="n">html</span><span class="o">.</span><span class="n">Li</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">branch</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">: Last commit </span><span class="si">{</span><span class="n">branch</span><span class="p">[</span><span class="s1">&#39;last_commit&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">branch</span><span class="p">[</span><span class="s1">&#39;last_commit_message&#39;</span><span class="p">]</span><span class="si">!r}</span><span class="s2">)&quot;</span>
+            <span class="p">)</span>
+            <span class="k">for</span> <span class="n">branch</span> <span class="ow">in</span> <span class="n">stats</span><span class="p">[</span><span class="s2">&quot;branch_details&quot;</span><span class="p">]</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="n">html</span><span class="o">.</span><span class="n">H5</span><span class="p">(</span><span class="s2">&quot;General Statistics&quot;</span><span class="p">),</span>
+            <span class="n">html</span><span class="o">.</span><span class="n">Ul</span><span class="p">(</span>
+                <span class="p">[</span>
+                    <span class="n">html</span><span class="o">.</span><span class="n">Li</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total Commits: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;total_commits&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
+                    <span class="n">html</span><span class="o">.</span><span class="n">Li</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;First Commit Date: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;first_commit_date&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
+                    <span class="n">html</span><span class="o">.</span><span class="n">Li</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Last Commit Date: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;last_commit_date&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
+                    <span class="n">html</span><span class="o">.</span><span class="n">Li</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total Lines Added: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;total_lines_added&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
+                    <span class="n">html</span><span class="o">.</span><span class="n">Li</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total Lines Deleted: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;total_lines_deleted&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
+                    <span class="n">html</span><span class="o">.</span><span class="n">Li</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total Lines Changed: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;total_lines_changed&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
+                    <span class="n">html</span><span class="o">.</span><span class="n">Li</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;Average Lines per Commit: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;average_lines_per_commit&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="p">),</span>
+                    <span class="n">html</span><span class="o">.</span><span class="n">Li</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total Branches: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;total_branches&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
+                <span class="p">]</span>
+            <span class="p">),</span>
+            <span class="n">html</span><span class="o">.</span><span class="n">H6</span><span class="p">(</span><span class="s2">&quot;Branch Details&quot;</span><span class="p">),</span>
+            <span class="n">branch_list</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="n">className</span><span class="o">=</span><span class="s2">&quot;mt-4&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
 <h2 id="insight_git.plugins.git_statistics.extract_git_stats" class="doc doc-heading">
           <code class=" language-python"><span class="n">extract_git_stats</span><span class="p">(</span><span class="n">repo_path</span><span class="p">)</span></code>
 
@@ -1155,9 +1340,10 @@
 
   <div class="doc doc-contents ">
   
-      <p>Extracts comprehensive Git statistics from a repository's commit history.</p>
+      <p>Extracts comprehensive Git statistics from a repository's commit history including branch details.</p>
 <p>This function collects data on the number of commits, commit dates, total lines added and deleted across all commits,
-and computes the average lines changed per commit. It provides a broad view of the repository's activity and work volume.</p>
+and computes the average lines changed per commit. It also provides dates for the first and last commit and detailed
+information on each branch.</p>
 
 
 
@@ -1206,7 +1392,8 @@ and computes the average lines changed per commit. It provides a broad view of t
           <td>
             <div class="doc-md-description">
               <p>A dictionary containing statistics about the repository including the total number of commits,
-  a list of commit dates, and the average lines changed per commit.
+  a list of commit dates, the first and last commit date, total and average lines changed per commit,
+  total branches, and details of each branch.
   If an error occurs, returns a dictionary with an 'error' key containing the error message.</p>
             </div>
           </td>
@@ -1216,7 +1403,8 @@ and computes the average lines changed per commit. It provides a broad view of t
 
           <details class="quote">
             <summary>Source code in <code>insight_git/plugins/git_statistics.py</code></summary>
-            <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 8</span>
+            <div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 7</span>
+<span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
@@ -1256,42 +1444,81 @@ and computes the average lines changed per commit. It provides a broad view of t
 <span class="normal">45</span>
 <span class="normal">46</span>
 <span class="normal">47</span>
-<span class="normal">48</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">extract_git_stats</span><span class="p">(</span><span class="n">repo_path</span><span class="p">):</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">extract_git_stats</span><span class="p">(</span><span class="n">repo_path</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Extracts comprehensive Git statistics from a repository&#39;s commit history.</span>
+<span class="sd">    Extracts comprehensive Git statistics from a repository&#39;s commit history including branch details.</span>
 
 <span class="sd">    This function collects data on the number of commits, commit dates, total lines added and deleted across all commits,</span>
-<span class="sd">    and computes the average lines changed per commit. It provides a broad view of the repository&#39;s activity and work volume.</span>
+<span class="sd">    and computes the average lines changed per commit. It also provides dates for the first and last commit and detailed</span>
+<span class="sd">    information on each branch.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        repo_path (str): The file system path to the local Git repository.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        dict: A dictionary containing statistics about the repository including the total number of commits,</span>
-<span class="sd">              a list of commit dates, and the average lines changed per commit.</span>
+<span class="sd">              a list of commit dates, the first and last commit date, total and average lines changed per commit,</span>
+<span class="sd">              total branches, and details of each branch.</span>
 <span class="sd">              If an error occurs, returns a dictionary with an &#39;error&#39; key containing the error message.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="k">try</span><span class="p">:</span>
         <span class="n">repo</span> <span class="o">=</span> <span class="n">Repo</span><span class="p">(</span><span class="n">repo_path</span><span class="p">)</span>
         <span class="n">commits</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">repo</span><span class="o">.</span><span class="n">iter_commits</span><span class="p">())</span>
 
         <span class="c1"># Collect commit dates</span>
         <span class="n">commit_dates</span> <span class="o">=</span> <span class="p">[</span><span class="n">commit</span><span class="o">.</span><span class="n">committed_datetime</span> <span class="k">for</span> <span class="n">commit</span> <span class="ow">in</span> <span class="n">commits</span><span class="p">]</span>
-
-        <span class="c1"># Calculate total lines added and deleted</span>
         <span class="n">total_lines_added</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">commit</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">total</span><span class="p">[</span><span class="s2">&quot;insertions&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">commit</span> <span class="ow">in</span> <span class="n">commits</span><span class="p">)</span>
         <span class="n">total_lines_deleted</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">commit</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">total</span><span class="p">[</span><span class="s2">&quot;deletions&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">commit</span> <span class="ow">in</span> <span class="n">commits</span><span class="p">)</span>
-
-        <span class="c1"># Compute average lines changed per commit</span>
+        <span class="n">total_lines_changed</span> <span class="o">=</span> <span class="n">total_lines_added</span> <span class="o">+</span> <span class="n">total_lines_deleted</span>
         <span class="n">average_lines_per_commit</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="p">((</span><span class="n">total_lines_added</span> <span class="o">+</span> <span class="n">total_lines_deleted</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">commits</span><span class="p">))</span> <span class="k">if</span> <span class="n">commits</span> <span class="k">else</span> <span class="mi">0</span>
+            <span class="p">(</span><span class="n">total_lines_changed</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">commits</span><span class="p">))</span> <span class="k">if</span> <span class="n">commits</span> <span class="k">else</span> <span class="mi">0</span>
         <span class="p">)</span>
+
+        <span class="c1"># Dates for the first and last commit</span>
+        <span class="n">first_commit_date</span> <span class="o">=</span> <span class="n">commit_dates</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">commits</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="n">last_commit_date</span> <span class="o">=</span> <span class="n">commit_dates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">commits</span> <span class="k">else</span> <span class="kc">None</span>
+
+        <span class="c1"># Branch details</span>
+        <span class="n">branches</span> <span class="o">=</span> <span class="n">repo</span><span class="o">.</span><span class="n">branches</span>
+        <span class="n">branch_details</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">branch</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="s2">&quot;last_commit&quot;</span><span class="p">:</span> <span class="n">branch</span><span class="o">.</span><span class="n">commit</span><span class="o">.</span><span class="n">hexsha</span><span class="p">,</span>
+                <span class="s2">&quot;last_commit_message&quot;</span><span class="p">:</span> <span class="n">branch</span><span class="o">.</span><span class="n">commit</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+            <span class="p">}</span>
+            <span class="k">for</span> <span class="n">branch</span> <span class="ow">in</span> <span class="n">branches</span>
+        <span class="p">]</span>
 
         <span class="k">return</span> <span class="p">{</span>
             <span class="s2">&quot;total_commits&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">commits</span><span class="p">),</span>
             <span class="s2">&quot;commit_dates&quot;</span><span class="p">:</span> <span class="n">commit_dates</span><span class="p">,</span>
+            <span class="s2">&quot;first_commit_date&quot;</span><span class="p">:</span> <span class="n">first_commit_date</span><span class="p">,</span>
+            <span class="s2">&quot;last_commit_date&quot;</span><span class="p">:</span> <span class="n">last_commit_date</span><span class="p">,</span>
+            <span class="s2">&quot;total_lines_added&quot;</span><span class="p">:</span> <span class="n">total_lines_added</span><span class="p">,</span>
+            <span class="s2">&quot;total_lines_deleted&quot;</span><span class="p">:</span> <span class="n">total_lines_deleted</span><span class="p">,</span>
+            <span class="s2">&quot;total_lines_changed&quot;</span><span class="p">:</span> <span class="n">total_lines_changed</span><span class="p">,</span>
             <span class="s2">&quot;average_lines_per_commit&quot;</span><span class="p">:</span> <span class="n">average_lines_per_commit</span><span class="p">,</span>
+            <span class="s2">&quot;total_branches&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">branches</span><span class="p">),</span>
+            <span class="s2">&quot;branch_details&quot;</span><span class="p">:</span> <span class="n">branch_details</span><span class="p">,</span>
         <span class="p">}</span>
 
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
