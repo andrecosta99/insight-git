@@ -32,7 +32,6 @@ dependencies = [
 insight-git = "insight_git.__main__:main"
 
 [project.entry-points."insight_git.plugins"]
-branch_information = "insight_git.plugins.branch_information:display_branch_information"
 commit_graph = "insight_git.plugins.commit_graph:display_commit_graph"
 contributors = "insight_git.plugins.contributors_info:display_contributors_info"
 commit_type = "insight_git.plugins.commit_type:display_commit_type"

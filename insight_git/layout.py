@@ -28,7 +28,7 @@ def create_layout(app):
                 dbc.Row(
                     [
                         dbc.Col(dbc.NavbarBrand(image_html, className="me-2")),
-                        dbc.Col(dbc.NavbarBrand("Insight Gits", className="ms-2")),
+                        dbc.Col(dbc.NavbarBrand("Insight Git", className="ms-2")),
                     ],
                     align="center",
                     className="g-0",
