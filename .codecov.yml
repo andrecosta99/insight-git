@@ -1,0 +1,15 @@
+coverage:
+  status:
+    project:
+      default:
+        target: 100%
+        threshold: 10%
+comment:
+  layout: "reach, diff, flags, files"
+parsers:
+  gcov:
+    branch_detection:
+      conditional: yes
+      loop: yes
+      method: no
+      macro: no
